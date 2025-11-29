@@ -168,7 +168,6 @@ def play_game(word_bank, partitioned_word_bank):
 
             valid_round = verify_valid_starting_words_not_equals_solutions(valid_starting_words, solutions)
 
-        print(valid_starting_words, solutions)
         play_new_round, increment_points = play_round(starting_word, valid_starting_words, solutions, num_rounds, num_points)
 
         if increment_points:
