@@ -1,0 +1,18 @@
+[project]
+name = "two_bits"
+version = "1.0.0"
+authors = [
+  { name="Shrinithi Narayanan", email="nithinara@gmail.com" },
+]
+description = "A tiny word game"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+license-files = ["LICENSE"]
+
+[project.urls]
+Homepage = "https://github.com/nithinara/two_bits"
