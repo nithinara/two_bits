@@ -5,8 +5,23 @@ BIT_SIZE = 2
 
 WORD_BANK = 'word_bank.txt'
 QUESTION_MARK = '?'
+DELINEATE = '====='
+COMMA_SEPARATOR = ', '
 
-INSTRUCTIONS = ''
+GAME_DESCRIPTION = ('GAME DESCRIPTION\n'
+                'We have taken a word and replaced its first two letters with question marks.\n'
+                'These two letters, as a unit, can be shifted elsewhere to form a new word.\n'
+                'For example, ??WARD could represent REWARD.\n'
+                'Shifting the RE three positions to the right would make WARRED, the answer.\n'
+                'The shifted pair of letters may end up in any position within or at the end of the new word.\n'
+                'Original description by Mike Shenk')
+INSTRUCTIONS = ('INSTRUCTIONS\n'
+                'When prompted, type in your answer.\n'
+                'You get 1 point for each correct answer.\n'
+                'There are no penalities for incorrect answers.\n'
+                'You will play multiple rounds and receive a final score.\n'
+                'If you give up for that round, type the letter "a".\n'
+                'If you want to quit the game, type the letter "q"')
 SEARCHING = 'Searching for a new starting word...'
 QUIT = 'Q'
 ANSWER = 'A'
@@ -106,13 +121,13 @@ def play_round(starting_word, valid_starting_words, solutions, num_rounds, num_p
         user_input = input(PROMPT + get_question_marks_str() + starting_word[get_bit_size():] + '\n')
 
         if user_input.lower() == QUIT.lower():
-            print(STARTING_WORDS + ', '.join(sorted(valid_starting_words)))
-            print(SOLUTIONS + ', '.join(sorted(solutions)))
+            print(STARTING_WORDS + COMMA_SEPARATOR.join(sorted(valid_starting_words)))
+            print(SOLUTIONS + COMMA_SEPARATOR.join(sorted(solutions)))
             print(SCORE.format(num_points, num_rounds))
             break
         elif user_input.lower() == ANSWER.lower():
-            print(STARTING_WORDS + ', '.join(sorted(valid_starting_words)))
-            print(SOLUTIONS + ', '.join(sorted(solutions)))
+            print(STARTING_WORDS + COMMA_SEPARATOR.join(sorted(valid_starting_words)))
+            print(SOLUTIONS + COMMA_SEPARATOR.join(sorted(solutions)))
             print(SCORE.format(num_points, num_rounds))
             new_round = True
             break
@@ -129,7 +144,10 @@ def play_round(starting_word, valid_starting_words, solutions, num_rounds, num_p
     return new_round, won_round
 
 def play_game(word_bank, partitioned_word_bank):
+    print(GAME_DESCRIPTION)
+    print(DELINEATE)
     print(INSTRUCTIONS)
+    print(DELINEATE)
 
     num_rounds = 0
     num_points = 0
